@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Example 
+
 {
 	Connection c=null;
 	static Statement s=null;
