@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Home Page</title>
+
+<!-- Styling using css -->
+<style type="text/css">
+table, th, td 
+{
+    border: 0.5px solid silver;
+    border-collapse: collapse;
+}
+h1
+{
+	color:black;
+}
+</style>
+
+<!-- JavaScript Code -->
+<script type="text/javascript">
+function validateComments()
+{
+	var comments=document.form1.comments.value;
+	//document.write(comments);
+	if((comments.length)>250)
+	{
+		alert("max 250 characters only !");
+		document.form1.comments.focus();
+		return false;
+	}
+	return true;
+}
+
+function validateUname() 
+{
+	var userName=document.form1.vendorName.value;
+	if(userName==""||userName==null)
+	{
+		alert("Not a valid username , Enter a valid uername !")
+		return false;	
+	}
+}
+function validateEmail() 
+{
+    var emailId=document.form1.vendorEmail.value;
+    var mailFormat=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if(emailId.match(mailFormat))
+    {
+    	document.form1.vendorEmail.focus();
+    	return true;
+    }
+    else
+    {
+    	alert("Invalid EmailId address");
+    	document.form1.vendorEmail.focus();
+    	return false;
+    }
+}
+function validateForm()
+{
+	if(document.form1.vendorName.value=="")
+	{
+		alert("Please enter username");
+		document.form1.vendorName.focus();
+		return false;
+	}
+	if(validateComments()) return true;
+	else
+		{
+		alert('something jere');
+		return false;
+		}
+}
+
+</script>
+</head>
+<body>
+<h1><div align="center">Vendor Evaluation System</div></h1>
+<!-- Form Creation --> <!-- onsubmit="return validateEmail();" onsubmit="return validateForm();"-->
+<form action="VendorEvaluationSystem" name="form1" method="get" onsubmit="return(validateForm());"> 
+<div align="center">
+<!-- Table creation -->
+<table style="width:80%">
+<!-- Vendor Name -->
+<tr>
+	<th>Vendor Name <sup>*</sup> : </th> <!-- onblur="return validateUname();" onfocus="true" -->
+	<th><input type="text" name="vendorName"  size="30" onblur="return(validateUname());" onfocus="true"></th> 
+</tr> 
+<!-- Vendor Email Id -->
+<tr>	
+	<th>Email <sup>*</sup> : </th> <!-- onchange="return validateEmail();" -->
+	<th><input type="email" name="vendorEmail" required="required" size="50" onchange="return validateEmail();"></th>
+</tr>
+ <!-- Completeness rating -->
+<tr>
+	<th>Completeness :</th>
+	<th>
+		<input type="radio" name="completeness" value="1"> 1
+		<input type="radio" name="completeness" value="2"> 2
+		<input type="radio" name="completeness" value="3"> 3
+		<input type="radio" name="completeness" value="4"> 4
+		<input type="radio" name="completeness" value="5"> 5
+		<input type="radio" name="completeness" value="6"> 6
+		<input type="radio" name="completeness" value="7"> 7
+		<input type="radio" name="completeness" value="8"> 8
+		<input type="radio" name="completeness" value="9"> 9
+		<input type="radio" name="completeness" value="10">10 
+	</th>
+</tr>
+<!-- Safety Security -->
+<tr>
+	<th>Safety :</th>
+	<th>
+		<input type="radio" name="safety" value="1"> 1
+		<input type="radio" name="safety" value="2"> 2
+		<input type="radio" name="safety" value="3"> 3
+		<input type="radio" name="safety" value="4"> 4
+		<input type="radio" name="safety" value="5"> 5
+		<input type="radio" name="safety" value="6"> 6
+		<input type="radio" name="safety" value="7"> 7
+		<input type="radio" name="safety" value="8"> 8
+		<input type="radio" name="safety" value="9"> 9
+		<input type="radio" name="safety" value="10">10 
+	</th>
+</tr>
+<!-- Cost Effectiveness -->
+<tr>
+	<th>Cost Effectiveness : </th>
+	<th>
+		<input type="radio" name="costeffectiveness" value="1"> 1
+		<input type="radio" name="costeffectiveness" value="2"> 2
+		<input type="radio" name="costeffectiveness" value="3"> 3
+		<input type="radio" name="costeffectiveness" value="4"> 4
+		<input type="radio" name="costeffectiveness" value="5"> 5
+		<input type="radio" name="costeffectiveness" value="6"> 6
+		<input type="radio" name="costeffectiveness" value="7"> 7
+		<input type="radio" name="costeffectiveness" value="8"> 8
+		<input type="radio" name="costeffectiveness" value="9"> 9
+		<input type="radio" name="costeffectiveness" value="10">10 
+	</th>
+</tr>
+<!-- Recommendation ? -->
+<tr>
+	<th>Do you re-commend ? </th>
+	<th>
+		<select name="recommendation">
+					<option value="yes" selected="selected">Yes</option>
+					<option value="no">No</option>
+					<option value="conditional">Conditional</option>
+		</select>
+	</th>
+</tr>
+<!-- Overall Rating -->
+<tr>
+	<th>Overall Rating <sup>*</sup> :</th>
+	<th>
+		<input type="radio" name="rating" required="required" value="1">1
+		<input type="radio" name="rating" value="2"> 2
+		<input type="radio" name="rating" value="3"> 3
+		<input type="radio" name="rating" value="4"> 4
+		<input type="radio" name="rating" value="5"> 5
+		<input type="radio" name="rating" value="6"> 6
+		<input type="radio" name="rating" value="7"> 7
+		<input type="radio" name="rating" value="8"> 8
+		<input type="radio" name="rating" value="9"> 9
+		<input type="radio" name="rating" value="10">10
+	</th>
+</tr>
+<!-- Comments -->
+<tr>
+	<th>Comments :</th>
+	<th>
+		<textarea name="comments" rows="8" cols="35" onchange="return(validateComments());" placeholder="write your comments here,max 250 characters !"></textarea>
+	</th>
+</tr>
+</table>
+
+<!-- New Table -->
+	<br>
+	<br>
+	<!-- Submit Button -->
+	<input type="submit" name="submit" value="Submit"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;	
+	<input type="reset" value=Reset>
+
+</div>
+</form>
+</body>
+</html>
